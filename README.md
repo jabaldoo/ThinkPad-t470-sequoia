@@ -34,7 +34,7 @@ This guide will walk you through the process of installing macOS Sequoia on a Le
 | **Graphics**     | Intel HD Graphics 520                     |
 | **RAM**          | 16GB DDR4                                 |
 | **Storage**      | 512 GB NVMe                               |
-| **Wi-Fi**        | Intel Wireless-AC 8265 (Replaced with compatible card) |
+| **Wi-Fi**        | Intel Wireless-AC 8265                    |
 | **Ethernet**     | Intel I219-V                              |
 | **Display**      | 14" FHD (1920x1080) IPS                   |
 | **Audio**        | Realtek ALC298                            |
@@ -111,7 +111,6 @@ Before starting, ensure you have the following:
 
 ## Screenshots 📸
 Here are some screenshots of the ThinkPad T470 running macOS Sequoia:  
-*(Add your screenshots here with descriptions)*  
 1. ![Screenshot 1](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.23.11.png)  
 2. ![Screenshot 2](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.22.06.png) 
 3. ![Screenshot 3](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/20250318_202420.jpg)  
