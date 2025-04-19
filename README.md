@@ -41,16 +41,6 @@ This guide will walk you through the process of installing macOS Sequoia on a Le
 
 ---
 
-## Prerequisites 📋
-Before starting, ensure you have the following:
-- A compatible Wi-Fi card (e.g., Broadcom BCM94352Z or similar).
-- A USB drive (16GB or larger).
-- A working macOS environment (for creating the installer).
-- A copy of macOS Sequoia (download from the App Store or other sources).
-- OpenCore or Clover bootloader files (included in this repo).
-
----
-
 ## Installation Guide 🛠️
 1. **Create macOS Installer**  
    Use `createinstallmedia` or a tool like [GibMacOS](https://github.com/corpnewt/gibMacOS) to create a bootable USB installer.
