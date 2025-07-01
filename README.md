@@ -1,127 +1,108 @@
-# Hackintosh macOS Sequoia on ThinkPad T470 🖥️🍎
 
-![ThinkPad T470](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Photos/hackintosh.png)  
+<div align="center">
 
-This repository contains the necessary files, configurations, and instructions to install macOS Sequoia on a Lenovo ThinkPad T470. This setup is intended for educational purposes and personal use. Please ensure you have a valid license for macOS before proceeding.
+# ThinkPad T470 - macOS Sequoia Hackintosh
 
----
+![macOS Sequoia on ThinkPad T470](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Photos/hackintosh.png)
 
-## Table of Contents
-1. [Introduction](#introduction-)
-2. [Hardware Specifications](#hardware-specifications-)
-3. [Prerequisites](#prerequisites-)
-4. [Installation Guide](#installation-guide-)
-5. [Post-Installation](#post-installation-)
-6. [What Works](#what-works-)
-7. [What Doesn't Work](#what-doesnt-work-)
-8. [Troubleshooting](#troubleshooting-)
-9. [Screenshots](#screenshots-)
-10. [Contributing](#contributing-)
-11. [License](#license-)
+**An OpenCore-based EFI configuration for running macOS Sequoia on the Lenovo ThinkPad T470.**
+
+</div>
 
 ---
 
-## Introduction 📖
-This guide will walk you through the process of installing macOS Sequoia on a Lenovo ThinkPad T470 using OpenCore or Clover bootloader. The goal is to achieve a stable and functional Hackintosh setup.
+This repository provides a complete and stable EFI setup to help you run macOS Sequoia on a ThinkPad T470. This guide is for educational purposes only.
+
+## 📋 Project Status
+
+| Feature                 | Status | Notes                                            |
+| ----------------------- | :----: | ------------------------------------------------ |
+| **Audio**               |   ✅   | Realtek ALC298 (ALC id=13)                       |
+| **Ethernet**            |   ✅   | Intel I219-V                                     |
+| **Wi-Fi**               |   ✅   | Requires `itlwm.kext` + `HeliPort.app`           |
+| **Bluetooth**           |   ✅   | Works natively.                                  |
+| **USB Ports**           |   ✅   | All ports functional.                            |
+| **Trackpad & Keyboard** |   ✅   | Full gesture support with VoodooI2C.             |
+| **Battery Status**      |   ✅   | Fully working.                                   |
+| **Sleep / Wake**        |   ✅   | Supported.                                       |
+| **HDMI**                |   ✅   | Audio and video output.                          |
+| **SD Card Reader**      |   ✅   | Working.                                         |
+| **USB-C**               |   ⚠️   | Data transfer only. No video or charging.        |
+| **Built-in Camera**     |   ❌   | Not functional.                                  |
+| **Fingerprint Reader**  |   ❌   | Unsupported in macOS.                            |
 
 ---
 
-## Hardware Specifications 💻
-| Component       | Details                                   |
-|------------------|-------------------------------------------|
-| **Model**        | Lenovo ThinkPad T470                      |
-| **Processor**    | Intel Core i5-6300U                       |
-| **Graphics**     | Intel HD Graphics 520                     |
-| **RAM**          | 16GB DDR4                                 |
-| **Storage**      | 512 GB NVMe                               |
-| **Wi-Fi**        | Intel Wireless-AC 8265                    |
-| **Ethernet**     | Intel I219-V                              |
-| **Display**      | 14" FHD (1920x1080) IPS                   |
-| **Audio**        | Realtek ALC298                            |
+## Hardware Specifications
+
+| Component        | Model                                   |
+| ---------------- | --------------------------------------- |
+| **CPU**          | Intel Core i5-6300U                     |
+| **GPU**          | Intel HD Graphics 520                   |
+| **RAM**          | 16GB DDR4                               |
+| **Storage**      | 512GB NVMe SSD                          |
+| **Wi-Fi/BT**     | Intel Wireless-AC 8265                  |
+| **Display**      | 14" FHD (1920x1080) IPS                 |
+| **Audio**        | Realtek ALC298                          |
 
 ---
 
-## Installation Guide 🛠️
-1. **Create macOS Installer**  
-   Use `createinstallmedia` or a tool like [GibMacOS](https://github.com/corpnewt/gibMacOS) to create a bootable USB installer.
+## 🚀 Installation
 
-2. **Configure Bootloader**  
-   Copy the provided EFI folder to the EFI partition of your USB drive.
+### 1. Prerequisites
+- A USB drive (16GB or larger).
+- Access to a machine running macOS to create the installer.
+- A genuine copy of macOS Sequoia.
 
-3. **BIOS Settings**  
-   - Disable Secure Boot.
-   - Enable AHCI mode.
-   - Set DVMT Pre-Allocated to 64MB or higher.
+### 2. Create macOS Installer
+Use the official `createinstallmedia` command or a tool like [gibMacOS](https://github.com/corpnewt/gibMacOS) to create a bootable USB.
 
-4. **Install macOS**  
-   Boot from the USB drive and follow the on-screen instructions to install macOS.
+### 3. EFI Setup
+- Mount the EFI partition of your USB drive.
+- Clone this repository and copy the `Thinkpad_Sequoia_EFI` folder to the root of the EFI partition.
 
-5. **Post-Installation**  
-   After installation, mount the EFI partition of your system drive and copy the EFI folder from the USB drive.
+### 4. BIOS Configuration
+- **Security -> Security Chip**: Disabled
+- **Memory Protection -> Execution Prevention**: Enabled
+- **Virtualization -> Intel Virtualization Technology**: Enabled
+- **Internal Device Access -> Bottom Cover Tamper Detection**: Disabled
+- **Anti-Theft -> Current Setting**: Disabled
+- **Secure Boot -> Secure Boot**: Disabled
+- **UEFI/Legacy Boot**: UEFI Only
+- **CSM Support**: No
 
----
+### 5. Install macOS
+- Boot from the USB drive.
+- At the OpenCore boot picker, select "Install macOS Sequoia".
+- Follow the on-screen instructions.
 
-## Post-Installation 🎉
-- **Wi-Fi and Bluetooth**: Use kexts or replace the Wi-Fi card with a compatible one.
-- **Audio**: Use AppleALC.kext with the correct layout-id.
-- **Trackpad**: Use VoodooPS2 or VoodooI2C kexts.
-- **Power Management**: Use CPUFriend and CPUFriendDataProvider for better power management.
-
----
-
-## What Works ✅
-- [x] Audio (ALC id=13)
-- [x] Ethernet
-- [x] USB Ports
-- [x] Trackpad and Keyboard
-- [x] Sleep/Wake
-- [x] Battery Status
-- [x] Bluetooth
-- [x] Wifi (but through itlwm.kext and heliport app)
-- [x] SD Card Reader
-- [x] HDMI (but only on HDMI port, no USB-C)
-- [x] USB-C (only data transfer)
+### 6. Post-Installation
+- After installation, mount your system drive's EFI partition.
+- Copy the `Thinkpad_Sequoia_EFI` folder from your USB to the system's EFI partition to make the drive bootable.
+- For Wi-Fi, install the `HeliPort.app` included in the `itlwm` release.
 
 ---
 
-## What Doesn't Work ❌
-- [ ] Built-in Camera
-- [ ] Fingerprint Reader (unsupported)
-- [ ] USB-C (partially working)
+## 📸 Screenshots
+
+<div align="center">
+
+| Desktop | About This Mac |
+| :---: | :---: |
+| ![Desktop Screenshot](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.23.11.png) | ![About This Mac](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.22.06.png) |
+
+</div>
 
 ---
 
-## Troubleshooting 🛑
-- **No Bootable Device**: Ensure BIOS settings are correct and the USB drive is properly formatted.
-- **Kernel Panics**: Check for incompatible kexts or incorrect configurations.
-- **No Audio**: Look in Hackintool for your ALC id.
-- **Wifi Wireless**: Use itlwm.kext and HeliPort app.
+## 🤝 Contributing
+Found a bug or have an improvement? Feel free to open an issue or submit a pull request. All contributions are welcome!
 
----
-
-## Screenshots 📸
-Here are some screenshots of the ThinkPad T470 running macOS Sequoia:  
-1. ![Screenshot 1](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.23.11.png)  
-2. ![Screenshot 2](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/Screenshot%202025-03-18%20at%2012.22.06.png) 
-3. ![Screenshot 3](https://github.com/jabaldoo/ThinkPad-t470-sequoia/blob/main/Screenshots/20250318_202420.jpg)  
-
----
-
-## Contributing 🤝
-Contributions are welcome! If you have improvements or fixes, please open a pull request or issue.
-
----
-
-## License 📜
+## 📜 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
----
-
-## Useful Links 🔗
-- [macOS Sequoia Official Page](https://www.apple.com/macos/sequoia)
+## 📚 Useful Resources
 - [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
-- [OpenCore Official Website](https://opencore.slowgeek.com/)
+- [r/hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
 
----
-
-**Disclaimer**: This project is for educational purposes only. I am not responsible for any damage to your hardware or software. Use at your own risk.
+**Disclaimer:** This project is for educational purposes only. I am not responsible for any damage to your hardware. Use at your own risk.
