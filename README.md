@@ -11,7 +11,7 @@
 
 ---
 
-This repository provides a complete and stable EFI setup to help you run macOS Sequoia on a ThinkPad T470. This guide is for educational purposes only.
+This repository provides a complete and stable EFI setup to help you run macOS Sequoia on a ThinkPad T470. (Sort of functional always sort of)
 
 ## 📋 Project Status
 
@@ -29,7 +29,7 @@ This repository provides a complete and stable EFI setup to help you run macOS S
 | **SD Card Reader**      |   ✅   | Working.                                         |
 | **USB-C**               |   ⚠️   | Data transfer only. No video or charging.        |
 | **Built-in Camera**     |   ❌   | Not functional.                                  |
-| **Fingerprint Reader**  |   ❌   | Unsupported in macOS.                            |
+| **Fingerprint Reader**  |   ❌   | ThinkPad doesnt have one.                    |
 
 ---
 
@@ -96,7 +96,7 @@ Use the official `createinstallmedia` command or a tool like [gibMacOS](https://
 ---
 
 ## 🤝 Contributing
-Found a bug or have an improvement? Feel free to open an issue or submit a pull request. All contributions are welcome!
+Feel free to contributte if you found some issues or kexts that can help with something else not listed in here
 
 ## 📜 License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
@@ -105,4 +105,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 - [Dortania's OpenCore Install Guide](https://dortania.github.io/OpenCore-Install-Guide/)
 - [r/hackintosh Subreddit](https://www.reddit.com/r/hackintosh/)
 
-**Disclaimer:** This project is for educational purposes only. I am not responsible for any damage to your hardware. Use at your own risk.
+
